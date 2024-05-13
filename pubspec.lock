@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  carousel_slider:
+    dependency: "direct main"
+    description:
+      name: carousel_slider
+      sha256: "9c695cc963bf1d04a47bd6021f68befce8970bcd61d24938e1fb0918cf5d9c42"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.1"
   characters:
     dependency: transitive
     description:
@@ -107,6 +115,19 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_tilt:
+    dependency: "direct main"
+    description:
+      name: flutter_tilt
+      sha256: a5016b2f460f6c1840abe9601a431f858ee3152435ce9ed8e187156102e4bee8
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -163,6 +184,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   matcher:
     dependency: transitive
     description:
@@ -275,6 +304,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  sensors_plus:
+    dependency: transitive
+    description:
+      name: sensors_plus
+      sha256: "6898cd4490ffc27fea4de5976585e92fae55355175d46c6c3b3d719d42f9e230"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
+  sensors_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: sensors_plus_platform_interface
+      sha256: bc472d6cfd622acb4f020e726433ee31788b038056691ba433fec80e448a094f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   shimmer:
     dependency: "direct main"
     description:
@@ -312,6 +357,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  stream_transform:
+    dependency: transitive
+    description:
+      name: stream_transform
+      sha256: "14a00e794c7c11aa145a170587321aedce29769c08d7f58b1d141da75e3b1c6f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   string_scanner:
     dependency: transitive
     description:
@@ -376,6 +429,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  vertical_card_pager:
+    dependency: "direct main"
+    description:
+      name: vertical_card_pager
+      sha256: "6ab7ea3f227bf61e67359e85785aff6a64df605f0568873fc8d1606d92a2449c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.2"
   vm_service:
     dependency: transitive
     description:
