@@ -41,6 +41,8 @@ dependencies:
   flutter_tilt: ^3.0.1
   carousel_slider: ^4.2.1
   custom_refresh_indicator: ^3.1.0
+  outline_gradient_button: ^2.0.1+1
+  anim_search_bar: ^2.0.3
    
    
 

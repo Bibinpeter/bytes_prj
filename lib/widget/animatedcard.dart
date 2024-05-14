@@ -105,7 +105,7 @@ class _AnimationCardState extends State<AnimationCard>
                        image:  NetworkImage(widget.product.imageUrl),   
                       filterQuality: FilterQuality.high,
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
+                      height: MediaQuery.of(context).size.height * 0.7,
                        )
                   ),
                 ),

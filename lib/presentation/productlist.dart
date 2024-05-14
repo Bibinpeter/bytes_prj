@@ -1,8 +1,9 @@
-import 'package:bytes/model/model.dart';
+import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:bytes/functions/function.dart';
 import 'package:bytes/service/apiservice.dart';
-import 'package:bytes/widget/animatedcard.dart';
+import 'package:bytes/widget/carosel.dart';
+import 'package:bytes/widget/gridview.dart';
 import 'package:bytes/widget/refresh.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,6 +21,7 @@ class _getProductsListingState extends State<getProductsListing> {
   int _currentPage = 1;
   bool _isLoading = false;
   final List<dynamic> _products = [];
+  final TextEditingController textController = TextEditingController();
 
   @override
   void initState() {
@@ -29,6 +31,7 @@ class _getProductsListingState extends State<getProductsListing> {
 
   @override
   void dispose() {
+    textController.dispose();
     super.dispose();
   }
 
@@ -52,10 +55,38 @@ class _getProductsListingState extends State<getProductsListing> {
     }
   }
 
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const Text("Products List",style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.black,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: AnimSearchBar(
+              color: Colors.blueGrey,
+              textFieldIconColor: Colors.amberAccent,
+              helpText: "find keyword",
+              width: 270,
+              textController: textController,
+              onSuffixTap: () {
+                setState(() {
+                  textController.clear();
+                });
+              },
+              onSubmitted: (String val) async {
+                setState(() {
+                  // Add your search logic here
+                });
+              },
+            ),
+          ),
+        ],
+      ),
       body: WarpIndicator(
         onRefresh: () => Future.delayed(const Duration(seconds: 2)),
         child: SafeArea(
@@ -65,8 +96,8 @@ class _getProductsListingState extends State<getProductsListing> {
                 _isLoading && _products.isEmpty
                     ? const Center(child: CircularProgressIndicator())
                     : carousel(products: _products),
-                const SizedBox(height: 8),
-                Padding(
+                const SizedBox(height: 8), 
+                Padding( 
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -81,60 +112,14 @@ class _getProductsListingState extends State<getProductsListing> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.5, // Set a fixed height for GridView
-                  child: GridView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 1.0,
-                      crossAxisSpacing: 1.0,
-                    ),
-                    itemCount: _products.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index < _products.length) {
-                        Product product = Product.fromJson(_products[index]);
-                        return AnimationCard(product: product);
-                      } else {
-                        return const CircularProgressIndicator();
-                      }
-                    },
-                  ),
+                gridWiew(
+                  products: _products,
+                  onItemTap: (imageUrl, description, price) => showProductBottomSheet(context, imageUrl, price, description),
                 ),
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class carousel extends StatelessWidget {
-  const carousel({
-    super.key,
-    required List products,
-  }) : _products = products;
-
-  final List _products;
-
-  @override
-  Widget build(BuildContext context) {
-    return CarouselSlider.builder(
-      itemCount: _products.length,
-      itemBuilder: (BuildContext context, int index, int realIndex) {
-        Product product = Product.fromJson(_products[index]);
-        return AnimationCard(product: product);
-      },
-      options: CarouselOptions(
-        autoPlayCurve: Curves.easeIn,
-        autoPlayAnimationDuration: const Duration(milliseconds: 500),
-        height: MediaQuery.of(context).size.height * 0.5,
-        autoPlay: true,
-        aspectRatio: 16 / 3,
-        enlargeCenterPage: true,
-        enlargeStrategy: CenterPageEnlargeStrategy.height,
       ),
     );
   }
