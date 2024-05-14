@@ -88,7 +88,7 @@ class _AnimationCardState extends State<AnimationCard>
               angle: 6.0,
               enableReverse: true,
               enableOutsideAreaMove: false,
-              leaveDuration: Duration(milliseconds: 600),
+              leaveDuration: Duration(milliseconds: 400),
               filterQuality: FilterQuality.high,
             ),
             lightConfig: const LightConfig(disable: true),
@@ -100,14 +100,13 @@ class _AnimationCardState extends State<AnimationCard>
                   alignment: Alignment.center,
                   filterQuality: FilterQuality.high,
                   child: TiltParallax(
-                    child: Image.network(
-                      widget.product
-                          .imageUrl,   
+                    child: FadeInImage(
+                      placeholder:const AssetImage("assets/images/loading.gif"),
+                       image:  NetworkImage(widget.product.imageUrl),   
                       filterQuality: FilterQuality.high,
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
-                                     
-                    ),
+                       )
                   ),
                 ),
                 Positioned.fill(
